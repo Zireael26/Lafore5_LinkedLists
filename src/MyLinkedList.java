@@ -294,4 +294,22 @@ public class MyLinkedList {
         return slow;
     }
 
+    public int kthFromEnd(int k) {
+        return kthNodeFromEnd(k).data;
+    }
+
+    private Node kthNodeFromEnd(int k) {
+        Node slow = this.head;
+        Node fast = this.head;
+
+        for (int i = 0; i < k; i++) {
+            fast = fast.next;
+        }
+
+        while (fast!= null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return slow;
+    }
 }
