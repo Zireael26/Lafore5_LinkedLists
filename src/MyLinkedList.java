@@ -302,24 +302,25 @@ public class MyLinkedList {
     }
 
     private Node kthNodeFromEnd(int k) {
-        Node slow = this.head;
-        Node fast = this.head;
+        Node slow = this.head; // slow pointer
+        Node fast = this.head; // fast pointer
 
         for (int i = 0; i < k; i++) {
-            fast = fast.next;
+            fast = fast.next; // fast pointer goes 'k' nodes ahead
         }
 
         while (fast!= null) {
-            slow = slow.next;
-            fast = fast.next;
+            slow = slow.next; //then move the pointers
+            fast = fast.next; // till fast reaches the tail / end
         }
-        return slow;
+        return slow; // this time slow pointer will be at kth position from end
     }
 
     public int find(int key) {
         int rv = this.find(key, this.head);
         return rv;
     }
+
     // method to search the linked list, recursive
     private int find(int key, Node node) {
         if (node == null){ // floor Condition, end of list reached
@@ -337,5 +338,68 @@ public class MyLinkedList {
         }
     }
 
-    
+    public MyLinkedList merge(MyLinkedList other) {
+        MyLinkedList returnList = new MyLinkedList();
+
+        Node thisTemp = this.head;
+        Node otherTemp = other.head;
+        while (thisTemp != null && otherTemp != null){ // if either list ends, end loop
+            if (thisTemp.data < otherTemp.data) { // if this list has smaller element
+                returnList.addLast(thisTemp.data); // add to new list
+                thisTemp = thisTemp.next;         // move to next node
+            } else {                              // if this list has smaller node
+                returnList.addLast(otherTemp.data); // add to new list
+                otherTemp = otherTemp.next;         // move to next node
+            }
+        }
+
+        // only one of the while loops below will work because one list will be exhausted in the above method
+        // add the remaining elements of the list
+        while (thisTemp != null) {
+            returnList.addLast(thisTemp.data);
+            thisTemp = thisTemp.next;
+        }
+        // add the remaining elements of the list
+        while (otherTemp != null) {
+            returnList.addLast(otherTemp.data);
+            otherTemp = otherTemp.next;
+        }
+
+        // now the list is sorted and merged
+        return returnList;
+    }
+
+    // perform mergeSort on the list
+    public void mergeSort() {
+        MyLinkedList sorted = this.mergeSortHelper();
+
+        this.head = sorted.head;
+        this.tail = sorted.tail;
+    }
+
+
+    private MyLinkedList mergeSortHelper() {
+        if (this.size() == 1) { // floor condition, when there is only 1 item, return
+            return this;
+        }
+        Node mid = this.midNode(); // we find this to break it into two halves
+        Node midNext = mid.next;   // and this too
+
+        MyLinkedList firstHalf = new MyLinkedList();
+        firstHalf.head = this.head; // head is the head of original list
+        firstHalf.tail = mid;       // tail is the mid of original list
+        firstHalf.tail.next = null; // set the next field of tail to null
+        firstHalf.size = (this.size + 1)/2; // size of this half is half of original size
+
+        MyLinkedList secondHalf = new MyLinkedList();
+        secondHalf.head = midNext; // head is the node next to middle node (midnext)
+        secondHalf.tail = this.tail; // tail of this half is original tail
+        secondHalf.size = this.size() / 2; // size is half of original size
+
+        firstHalf = firstHalf.mergeSortHelper();   // recursive call to sort first half
+        secondHalf = secondHalf.mergeSortHelper(); // recursive call to sort second half
+
+        MyLinkedList sorted = firstHalf.merge(secondHalf); // join the final two halves
+        return sorted;
+    }
 }
