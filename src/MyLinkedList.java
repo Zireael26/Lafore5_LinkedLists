@@ -95,6 +95,7 @@ public class MyLinkedList {
         return rv; // return the needed node
     }
 
+    // O(1)
     public int getFirst() throws Exception {
         if(this.isEmpty())
             throw new Exception("Linked list is empty");
@@ -102,6 +103,7 @@ public class MyLinkedList {
         return this.head.data; // return the data of the first / head node
     }
 
+    // O(1)
     public int getLast() throws Exception {
         if (this.isEmpty())
             throw new Exception("Linked list is empty");
@@ -109,6 +111,7 @@ public class MyLinkedList {
         return this.tail.data; // return the data of the last / tail node
     }
 
+    // O(n)
     public int getAt(int idx) throws Exception {
         if(this.isEmpty())
             throw new Exception("Linked list is empty");
@@ -312,4 +315,27 @@ public class MyLinkedList {
         }
         return slow;
     }
+
+    public int find(int key) {
+        int rv = this.find(key, this.head);
+        return rv;
+    }
+    // method to search the linked list, recursive
+    private int find(int key, Node node) {
+        if (node == null){ // floor Condition, end of list reached
+            return -1; // -1 indicates not found
+        }
+        if (node.data == key){ //if found at head / position 0, return 0
+            return 0;
+        } else {
+            int rv = find(key, node.next); // recursive call
+            if (rv == -1) { // not found
+                return rv;
+            } else { //found
+                return rv + 1; //add 1 for every pop from recursion stack
+            }
+        }
+    }
+
+    
 }
