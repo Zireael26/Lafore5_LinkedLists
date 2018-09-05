@@ -50,7 +50,7 @@ public class MyLinkedList {
     }
 
     public void addLast(int data) {
-        Node node = new Node(data, this.tail); // make a new node object with data
+        Node node = new Node(data, null); // make a new node object with data
         if (this.isEmpty()) { // to see if this is the first node
             this.head = node; //since this is the first node, it will also be the head
             this.tail = node; //and the tail
