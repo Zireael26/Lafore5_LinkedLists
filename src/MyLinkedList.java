@@ -567,4 +567,21 @@ public class MyLinkedList {
         this.tail  = newList.tail;
         this.size = newList.size;
     }
+
+    public void removeEveryKthNode(int k) throws Exception {
+        MyLinkedList finalList = new MyLinkedList();  // make a new LinkedList
+        int discard = 1;                              // make an int 'discard' to determine whether to keep or delete a node
+        while (!this.isEmpty()) {
+            int removed = this.removeFirst();
+            if (discard % k != 0) { // if it is not a multiple of K, add to new list
+                finalList.addLast(removed);
+            }
+
+            discard++;              // increase the value of discard
+        }
+
+        this.head = finalList.head;
+        this.tail = finalList.tail;
+        this.size = finalList.size;
+    }
 }
