@@ -11,6 +11,8 @@ public class Main {
         list1.addLast(25);
 
         list1.display();
+        list1.fold();
+        list1.display();
 
         System.out.println(list1.isPalindrome());
     }

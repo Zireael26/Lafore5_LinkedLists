@@ -323,6 +323,33 @@ public class MyLinkedList {
         return slow;
     }
 
+    // this method will take a linked list like 10 -> 20 -> 30 -> 40 -> 50
+    // and fold it to make it look like 10 -> 50 -> 20 -> 40 -> 30
+    public void fold() {
+        HeapMover left = new HeapMover(this.head);
+        this.fold(left, this.head, 0);
+    }
+
+    private void fold(HeapMover left, Node right, int floor) {
+        if (right == null) { // when right hits null, fall back and do work
+            return;
+        }
+
+        this.fold(left, right.next, floor + 1);
+        // at this point, left is at head, right is at tail
+        if (floor > this.size() / 2) {  // so while we do not reach the center of the list
+            Node origLeftNext = left.node.next; // we preserve the original left next address
+            left.node.next = right;             // then we set the next of left node to right
+            right.next = origLeftNext;          // then we set the next of right to the original next of left
+
+            left.node = origLeftNext;           // moved ahead by setting the value of left to its original next
+        } else if (floor == this.size() / 2) {  // when at the center of the linked list
+            this.tail = right;                  // the node at right pointer becomes the tail
+            this.tail.next = null;              // and its next pointer is set to null
+        }
+
+    }
+
     public int kthFromEnd(int k) {
         return kthNodeFromEnd(k).data;
     }
