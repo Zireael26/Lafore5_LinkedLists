@@ -456,5 +456,37 @@ public class MyLinkedList {
         return sorted;
     }
 
+    // method to change the the order of elements in a list to contain all odd elements first, followed by even elements
+    public void oddEven() throws Exception {
+        MyLinkedList oddList = new MyLinkedList();   // we will make two new LinkedList objects
+        MyLinkedList evenList = new MyLinkedList();  // to keep odd and even elements
+
+        // run a loop on original list (this)
+        while(this.size != 0) { // while it still has elements
+            int removed = this.removeFirst(); // remove first and check if its dd or even
+            if (removed % 2 == 1) {           // if odd, add to oddList
+                oddList.addLast(removed);
+            } else {                          // if even, add to evenList
+                evenList.addLast(removed);
+            }
+        }
+
+        // if any one of the lists stands to be empty,
+        if (oddList.size == 0) {
+            this.head = evenList.head;  // then head, tail, size of the changed list will come from the non-empty list
+            this.tail = evenList.tail;
+            this.size = evenList.size;
+        } else if (evenList.size == 0) {
+            this.head = oddList.head;
+            this.tail = oddList.tail;
+            this.size = oddList.size;
+        } else {                       // else
+            this.head = oddList.head;  // head of changed list is head of odd list
+            this.tail = evenList.tail; // tail of original list is tail of even list
+            this.size = oddList.size + evenList.size; // and size is sum of both their sizes
+            oddList.tail.next = evenList.head;  // now we connect the end of odd list to start of even list to make it one list
+        }
+    }
+
 
 }

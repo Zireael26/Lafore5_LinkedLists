@@ -6,10 +6,12 @@ public class Main {
         list1.addFirst(25);
         list1.addLast(24);
         list1.addLast(13);
-        list1.addLast(13);
+        list1.addLast(14);
         list1.addLast(24);
-        list1.addLast(25);
+        list1.addLast(29);
 
+        list1.display();
+        list1.oddEven();
         list1.display();
         list1.fold();
         list1.display();
