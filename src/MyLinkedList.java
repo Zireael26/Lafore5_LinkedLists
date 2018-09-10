@@ -533,5 +533,38 @@ public class MyLinkedList {
 
         this.head = changedList.head;
         this.tail = changedList.tail;
+        this.size = changedList.size;
+    }
+
+    //Function to delete m nodes after n nodes
+    public void delMAfterN(int m, int n) throws Exception {
+        if (this.size() < (m + n)) {
+            throw new Exception("Insufficient sized list to delete the nodes");
+        }
+
+        MyLinkedList newList = new MyLinkedList();
+        for (int i = 0; i < n; i++) {  // save the first 'n' nodes in a new list
+            int removed = this.removeFirst();  // O(1)
+            newList.addLast(removed);          // O(1)
+        }
+
+        for (int i = 0; i < m; i++) {          // remove the next m nodes
+            this.removeFirst();                // O(1)
+        }
+
+        // now get the remaining part of the list in a temporary list
+        MyLinkedList remainingList = new MyLinkedList();
+        remainingList.head = this.head;
+        remainingList.tail = this.tail;
+        remainingList.size = this.size;
+
+        // and join this to the end of our new list
+        newList.tail.next = remainingList.head;
+        newList.tail = remainingList.tail;
+        newList.size += remainingList.size;
+
+        this.head = newList.head;
+        this.tail  = newList.tail;
+        this.size = newList.size;
     }
 }

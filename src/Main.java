@@ -27,5 +27,8 @@ public class Main {
         list1.display();
         list1.kReverse(3);
         list1.display();
+
+        list1.delMAfterN(2, 3);
+        list1.display();
     }
 }
