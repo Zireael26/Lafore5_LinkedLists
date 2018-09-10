@@ -6,9 +6,12 @@ public class Main {
         list1.addFirst(25);
         list1.addLast(24);
         list1.addLast(13);
-        list1.addLast(29);
-        list1.addFirst(35);
+        list1.addLast(13);
+        list1.addLast(24);
+        list1.addLast(25);
 
         list1.display();
+
+        System.out.println(list1.isPalindrome());
     }
 }

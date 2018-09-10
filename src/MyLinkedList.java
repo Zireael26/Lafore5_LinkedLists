@@ -280,6 +280,32 @@ public class MyLinkedList {
         }
     }
 
+    // function to find if a list is a palindrome
+    public boolean isPalindrome() {
+        HeapMover left = new HeapMover(this.head);
+        return this.isPalindrome(left, this.head);
+    }
+
+    private boolean isPalindrome(HeapMover left, Node right) {
+        if (right == null) { // take right to the end, then compare when it starts to return
+            return true;
+        }
+
+        boolean isPalin = this.isPalindrome(left, right.next);
+
+        if (isPalin == false) { // if in any case it becomes false
+            return false;  // we shall return false without thinking
+        } else { // if it is true, we will compare for every step
+            if (left.node.data == right.data) {  // compare data of the (left) node inside HeapMover object with
+                                                 // the data of right as it falls down the recursion stack
+                left.node = left.node.next;      // then move HeapMover to right and right node will move to left itself
+                return true;                     // return true for this comparison
+            } else {
+                return false;                    // if they aren't equal, return false and then we will return false
+            }                                    // for all other cases without even checking
+        }
+    }
+
     public int mid() {
         return midNode().data;
     }
@@ -402,4 +428,6 @@ public class MyLinkedList {
         MyLinkedList sorted = firstHalf.merge(secondHalf); // join the final two halves
         return sorted;
     }
+
+
 }
