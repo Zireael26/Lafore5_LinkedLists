@@ -505,4 +505,33 @@ public class MyLinkedList {
         this.tail = newList.tail;
         this.size = newList.size;
     }
+
+    public void kReverse(int k) throws Exception {
+        MyLinkedList changedList = new MyLinkedList();
+        MyLinkedList tempList = new MyLinkedList();
+
+        // the for loop inside the while loop looks like O(n^2) but isn't
+        // because the inner loop runs 'k' times but the outer loop only runs 'n/k' times, so (n/k) * k = n
+        while (!this.isEmpty()) {
+            for (int i = 0; i < k; i++) {           // k times
+                int removed = this.removeFirst();   // remove first from this
+                tempList.addFirst(removed);         // addFirst to tempList
+            }                                       // this process will add k elements in reverse order to the tempList
+
+            if (changedList.isEmpty()) {            // if this is the first time, make changedList to tempList
+                changedList = tempList;
+                tempList = new MyLinkedList();      // empty the tempList
+            } else {                                // else
+                changedList.tail.next = tempList.head;     // connect tail of changedList to tempList
+                changedList.tail = tempList.tail;          // set new tail of changedList to tail of tempList
+                changedList.size += tempList.size;         // increase its size
+
+                tempList = new MyLinkedList();             // empty the tempList
+            }
+        }
+        changedList.tail.next = null;
+
+        this.head = changedList.head;
+        this.tail = changedList.tail;
+    }
 }
