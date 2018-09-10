@@ -315,7 +315,7 @@ public class MyLinkedList {
         Node slow = this.head; // this will reach mid, when
         Node fast = this.head; // this will reach the end
 
-        while (fast!= null) {
+        while (fast.next!= null && fast.next.next != null) {
             slow = slow.next; // proceed by 1 node
             fast = fast.next.next; // proceed by 2 nodes
         }
@@ -488,5 +488,21 @@ public class MyLinkedList {
         }
     }
 
+    // remove duplicates from a sorted list
+    public void removeDuplicates() throws Exception {
+        MyLinkedList newList = new MyLinkedList(); // make new LinkedList
 
+        int removed = this.removeFirst();          // remove and add the first item to new list
+        newList.addLast(removed);
+        while (!this.isEmpty()) {                  // then while this is not empty
+            removed = this.removeFirst();          // remove an element, check
+            if (newList.tail.data != removed) {    // if this is different from the data in the tail of new list
+                newList.addLast(removed);          // only then, add
+            }
+        }
+
+        this.head = newList.head;                  // set all List summary pointers to new List
+        this.tail = newList.tail;
+        this.size = newList.size;
+    }
 }
