@@ -23,7 +23,7 @@ public class Main {
 //        list1.display();
 //        list1.removeDuplicates();
 //        list1.display();
-//        System.out.println(list1.isPalindrome());
+        System.out.println(list1.isPalindrome());
         list1.display();
         list1.kReverse(3);
         list1.display();
@@ -31,5 +31,14 @@ public class Main {
 //        list1.delMAfterN(2, 3);
         list1.removeEveryKthNode(3);
         list1.display();
+
+        MyLinkedList numberList = new MyLinkedList();
+        numberList.addLast(9);
+        numberList.addLast(9);
+        numberList.addLast(9);
+        numberList.addLast(9);
+        numberList.display();
+        numberList.addOne();
+        numberList.display();
     }
 }

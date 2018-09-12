@@ -247,7 +247,6 @@ public class MyLinkedList {
         node.next.next = node; // actual statement the reverses the pointer
     }
 
-
     // O(n) - Reversing Linked List by swapping data recursively
     public void reverseDataRecursive() {
         HeapMover left = new HeapMover(this.head);
@@ -268,7 +267,6 @@ public class MyLinkedList {
 
             left.node = left.node.next;
         }
-
     }
 
     // Helper class for ReverseDataRecursive
@@ -315,7 +313,7 @@ public class MyLinkedList {
         Node slow = this.head; // this will reach mid, when
         Node fast = this.head; // this will reach the end
 
-        while (fast.next!= null && fast.next.next != null) {
+        while (fast.next != null && fast.next.next != null) {
             slow = slow.next; // proceed by 1 node
             fast = fast.next.next; // proceed by 2 nodes
         }
@@ -583,5 +581,26 @@ public class MyLinkedList {
         this.head = finalList.head;
         this.tail = finalList.tail;
         this.size = finalList.size;
+    }
+
+    // this method adds 1 to a linked list representation of a number
+    public void addOne() {
+        int carry = this.addOne(this.head);
+        if (carry == 1) {            // if the carry for the number is 1, add a new node to the start
+            this.addFirst(carry);  // this will only run if the number is like 9, 99, 999, 9999 and so on
+        }
+    }
+
+    private int addOne(Node node) {
+        if (node == null) {   // when you hit the rightmost place
+            return 1;         // return carry of unit digit as 1, so it will be added to the number
+        }
+
+        int carry = this.addOne(node.next); // this method call gets the carry from the previous power of 10.
+
+        node.data += carry;     // carry is either 0 or 1
+        int myCarry = node.data / 10;   // calculate my carry that I shall return
+        node.data %= 10;        // just in case the number exceeds 10
+        return myCarry;         // return the calculated carry for the next power of 10s place
     }
 }
