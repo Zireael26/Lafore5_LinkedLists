@@ -57,11 +57,11 @@ public class Main {
         list012.addLast(1);
         list012.addLast(2);
         list012.display();
-        list012.sort012Links();
+//        list012.sort012Links();
+//        list012.display();
+
+        list012.makeLoop();
+        list012.findAndRemoveLoop();
         list012.display();
-
-
-
-
     }
 }
