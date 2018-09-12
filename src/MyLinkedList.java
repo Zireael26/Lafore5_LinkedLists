@@ -684,6 +684,6 @@ public class MyLinkedList {
         // because they will meet at the last Node of the loop, set the next pointer of this node as null
         nodeAtK.next = null;
         System.out.println("Loop removed!");
-        this.tail = tempNode;
+        this.tail = nodeAtK;
     }
 }
