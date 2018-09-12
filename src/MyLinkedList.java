@@ -583,6 +583,30 @@ public class MyLinkedList {
         this.size = finalList.size;
     }
 
+    // Method to sort a list of 0s, 1s and 2s by changing links
+    public void sort012Links() throws Exception {
+        MyLinkedList zeroList = new MyLinkedList();
+        MyLinkedList oneList = new MyLinkedList();
+        MyLinkedList twoList = new MyLinkedList();
+
+        while (!this.isEmpty()) {       // remove from this list and add to one of the 3 lists according to value
+            int removedNumber = this.removeFirst();
+            if (removedNumber == 0) {
+                zeroList.addLast(removedNumber);
+            } else if (removedNumber == 1) {
+                oneList.addLast(removedNumber);
+            } else {
+                twoList.addLast(removedNumber);
+            }
+        }
+
+        // for simplicity, we shall assume that neither of the three lists will be empty
+        this.head = zeroList.head;
+        this.tail = twoList.tail;
+        oneList.tail.next = twoList.head;
+        zeroList.tail.next = oneList.head;
+    }
+
     // this method adds 1 to a linked list representation of a number
     public void addOne() {
         int carry = this.addOne(this.head);

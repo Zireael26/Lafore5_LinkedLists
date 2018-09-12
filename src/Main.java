@@ -40,5 +40,28 @@ public class Main {
         numberList.display();
         numberList.addOne();
         numberList.display();
+
+        MyLinkedList list012 = new MyLinkedList();
+        list012.addLast(2);
+        list012.addLast(1);
+        list012.addLast(2);
+        list012.addLast(2);
+        list012.addLast(2);
+        list012.addLast(0);
+        list012.addLast(1);
+        list012.addLast(1);
+        list012.addLast(0);
+        list012.addLast(0);
+        list012.addLast(0);
+        list012.addLast(1);
+        list012.addLast(1);
+        list012.addLast(2);
+        list012.display();
+        list012.sort012Links();
+        list012.display();
+
+
+
+
     }
 }
