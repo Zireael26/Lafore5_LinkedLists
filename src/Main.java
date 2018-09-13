@@ -19,16 +19,16 @@ public class Main {
         list1.fold();
         list1.display();
 
-        list1.mergeSort();
-        list1.display();
-        list1.removeDuplicates();
-        list1.display();
-        System.out.println(list1.isPalindrome());
-        list1.display();
-        list1.kReverse(3);
-        list1.display();
+//        list1.mergeSort();
+//        list1.display();
+//        list1.removeDuplicates();
+//        list1.display();
+//        System.out.println(list1.isPalindrome());
+//        list1.display();
+//        list1.kReverse(3);
+//        list1.display();
 
-        list1.delMAfterN(2, 0);
+        list1.delMAfterN2(2, 0);
 //        list1.removeEveryKthNode(3);
         list1.display();
 

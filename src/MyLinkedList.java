@@ -569,6 +569,30 @@ public class MyLinkedList {
         }
     }
 
+    // delete 'm' nodes after skipping 'n' nodes
+    public void delMAfterN2(int m, int n) throws Exception {
+        if (m+n > this.size()) {
+            throw new Exception("List too small!");
+        }
+
+        Node nthNode = this.head;
+        Node mthNode = this.head;
+
+        for (int i = 0; i < (m + n); i++) {
+            if (i < n-1) { // run this n-1 times to bring nthNode to (n-1)th node
+                nthNode = nthNode.next;
+            }
+            mthNode = mthNode.next; // to take it to mthNode
+        }
+
+        // connect the next of nthNode to mthNode
+        nthNode.next = mthNode;
+        if (n == 0) { // if n is not zero, then no need to change head, else set head as nthNode
+           this.head = mthNode;
+        }
+        this.size -= m; // reduce the nodes removed from size
+    }
+
     public void removeEveryKthNode(int k) throws Exception {
         MyLinkedList finalList = new MyLinkedList();  // make a new LinkedList
         int discard = 1;                              // make an int 'discard' to determine whether to keep or delete a node
