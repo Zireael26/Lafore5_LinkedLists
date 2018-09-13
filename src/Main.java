@@ -13,23 +13,23 @@ public class Main {
         list1.addLast(13);
 
 
-//        list1.display();
-//        list1.oddEven();
-//        list1.display();
-//        list1.fold();
-//        list1.display();
+        list1.display();
+        list1.oddEven();
+        list1.display();
+        list1.fold();
+        list1.display();
 
-//        list1.mergeSort();
-//        list1.display();
-//        list1.removeDuplicates();
-//        list1.display();
+        list1.mergeSort();
+        list1.display();
+        list1.removeDuplicates();
+        list1.display();
         System.out.println(list1.isPalindrome());
         list1.display();
         list1.kReverse(3);
         list1.display();
 
-//        list1.delMAfterN(2, 3);
-        list1.removeEveryKthNode(3);
+        list1.delMAfterN(2, 0);
+//        list1.removeEveryKthNode(3);
         list1.display();
 
         MyLinkedList numberList = new MyLinkedList();
@@ -57,11 +57,11 @@ public class Main {
         list012.addLast(1);
         list012.addLast(2);
         list012.display();
-//        list012.sort012Links();
-//        list012.display();
-
-        list012.makeLoop();
-        list012.findAndRemoveLoop();
+        list012.sort012Links();
         list012.display();
+
+//        list012.makeLoop();
+//        list012.findAndRemoveLoop();
+//        list012.display();
     }
 }

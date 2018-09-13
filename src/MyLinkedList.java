@@ -550,20 +550,23 @@ public class MyLinkedList {
             this.removeFirst();                // O(1)
         }
 
-        // now get the remaining part of the list in a temporary list
-        MyLinkedList remainingList = new MyLinkedList();
-        remainingList.head = this.head;
-        remainingList.tail = this.tail;
-        remainingList.size = this.size;
+        // if it is empty, then the list that (this) points to is our answer, else
+        if (!newList.isEmpty()) {
+            // now get the remaining part of the list in a temporary list
+            MyLinkedList remainingList = new MyLinkedList();
+            remainingList.head = this.head;
+            remainingList.tail = this.tail;
+            remainingList.size = this.size;
 
-        // and join this to the end of our new list
-        newList.tail.next = remainingList.head;
-        newList.tail = remainingList.tail;
-        newList.size += remainingList.size;
+            // and join this to the end of our new list
+            newList.tail.next = remainingList.head;
+            newList.tail = remainingList.tail;
+            newList.size += remainingList.size;
 
-        this.head = newList.head;
-        this.tail  = newList.tail;
-        this.size = newList.size;
+            this.head = newList.head;
+            this.tail  = newList.tail;
+            this.size = newList.size;
+        }
     }
 
     public void removeEveryKthNode(int k) throws Exception {
