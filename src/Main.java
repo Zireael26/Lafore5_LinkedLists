@@ -14,9 +14,20 @@ public class Main {
 
 
         list1.display();
-        list1.oddEven();
+//        list1.oddEven();
+//        list1.display();
+//        list1.fold();
+//        list1.display();
+//        list1.reverseDataRecursive();
+//        list1.display();
+
+        list1.reverseDataIterative();
         list1.display();
-        list1.fold();
+
+        list1.reversePointerRecursive();
+        list1.display();
+
+        list1.reversePointerIteravtive();
         list1.display();
 
 //        list1.mergeSort();

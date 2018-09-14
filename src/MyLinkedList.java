@@ -196,7 +196,7 @@ public class MyLinkedList {
             // Swap the data of both nodes
             int temp = left.data;
             left.data = right.data;
-            right.data = left.data;
+            right.data = temp;
 
             leftIndex++; // move one step right
             rightIndex--; // move one step left
