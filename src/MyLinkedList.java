@@ -121,7 +121,7 @@ public class MyLinkedList {
 
         if (idx == 0) {
             return this.getFirst();
-        } else if (idx == this.size()) {
+        } else if (idx == this.size() - 1) {
             return this.getLast();
         } else {
             return this.getNodeAt(idx).data; // use the previously built getNodeAt method to get node, return its data
