@@ -14,30 +14,40 @@ public class Main {
 
 
         list1.display();
-//        list1.oddEven();
-//        list1.display();
-//        list1.fold();
-//        list1.display();
-//        list1.reverseDataRecursive();
-//        list1.display();
+        list1.oddEven();
+        System.out.println("************** Displaying after OddEven Rearrangement *************");
+        list1.display();
+        list1.fold();
+        System.out.println("************** Displaying after Folding ***************************");
+        list1.display();
+        list1.reverseDataRecursive();
+        System.out.println("************** Displaying after Reversing data recursively ********");
+        list1.display();
 
         list1.reverseDataIterative();
+        System.out.println("************** Displaying after Reversing data iteratively ********");
         list1.display();
 
         list1.reversePointerRecursive();
+        System.out.println("************** Displaying after Reversing pointer recursively *****");
         list1.display();
 
         list1.reversePointerIteravtive();
+        System.out.println("************** Displaying after Reversing pointer iteratively *****");
         list1.display();
 
-//        list1.mergeSort();
-//        list1.display();
-//        list1.removeDuplicates();
-//        list1.display();
-//        System.out.println(list1.isPalindrome());
-//        list1.display();
+        list1.mergeSort();
+        System.out.println("************** Displaying after performing merge sort *************");
+        list1.display();
+        list1.removeDuplicates();
+        System.out.println("************** Displaying after removing duplicates ***************");
+        list1.display();
+        System.out.println("Is the list a palindrome: " + list1.isPalindrome());
+        list1.display();
+        // don't call kReverse before uncommenting remove duplicates
 //        list1.kReverse(3);
-//        list1.display();
+        System.out.println("************** Displaying after k-reversing, with k=3 *************");
+        list1.display();
 
         list1.delMAfterN2(2, 0);
 //        list1.removeEveryKthNode(3);
@@ -71,8 +81,8 @@ public class Main {
         list012.sort012Links();
         list012.display();
 
-//        list012.makeLoop();
-//        list012.findAndRemoveLoop();
-//        list012.display();
+        list012.makeLoop();
+        list012.findAndRemoveLoop();
+        list012.display();
     }
 }
